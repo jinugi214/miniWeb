@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, height=device-height,
+     minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    <title>게시물 작성폼</title>
+</head>
+<style>
+    button {
+        background-color: #8aa1a1;
+        border:none;
+        color:white;
+        border-radius: 5px;
+        width:30%;
+        height:35px;
+        font-size: 14pt;
+        margin-top:100px;
+    }
+
+</style>
+<body>
+<div class="layout">
+    <form action="/board/modify" method="post">
+
+        <input name="id" type="hidden" th:value="${board.id}">
+
+        <label for="title">제목</label><br>
+        <input name="title" id="title" type="text" th:value="${board.title}"> <br>
+
+        <label for="writer">작성자</label><br>
+        <input name="writer" id="writer" type="text"  th:value="${writer}" readonly><br>
+
+        <label for="content">본문</label><br>
+        <textarea name="content" id="content" th:text="${board.content}"></textarea> <br>
+
+        <input type="hidden" name="viewCount" th:value="${board.viewCount}">
+        <input type="hidden" name="_method" value="put"/>
+
+        <button type="submit">수정</button>
+    </form>
+</div>
+
+</body>
+</html>

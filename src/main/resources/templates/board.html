@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, height=device-height,
+     minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css" type="text/css">
+    <title>게시판 - miniWeb</title>
+</head>
+<style>
+    table {
+        border-collapse: separate;
+        border-spacing: 10px 10px;
+    }
+</style>
+<body>
+<button type="button" onClick="location.href='/logout'">로그아웃하기</button>
+<div class="layout">
+    <table>
+        <thead>
+        <tr>
+            <th>글번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>등록일</th>
+            <th>조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board : ${boards}">
+            <td th:text="${board.id}"></td>
+            <td>
+                <a th:text="${board.title}" th:href="@{/board/view/{id}(id=${board.id})}"></a>
+            </td>
+            <td th:text="${board.writer}"></td>
+            <td th:text="${board.registeredDate}"></td>
+            <td th:text="${board.viewCount}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+        <a th:if="${page != nowPage}" th:href="@{/board(page = ${page - 1})}" th:text="${page}"></a>
+        <strong th:if="${page == nowPage}" th:text="${page}" style="color: blue"></strong>
+    </th:block>
+    <form th:action="@{/board/search}" method="get">
+        <input style="width: 130px;" type="text" name="keyword">
+        <button type="submit">검색</button>
+    </form>
+</div>
+
+<button type="button" onClick="location.href='/board/write'">글쓰기</button>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, height=device-height,
+     minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    <title>게시물 작성폼</title>
+</head>
+<style>
+    button {
+        background-color: #8aa1a1;
+        border:none;
+        color:white;
+        border-radius: 5px;
+        width:30%;
+        height:35px;
+        font-size: 14pt;
+        margin-top:100px;
+    }
+
+</style>
+<body>
+<div class="layout">
+    <form action="/board/write" method="post">
+        <p>
+        <label for="title">제목</label><br>
+        <input name="title" id="title" type="text">
+        </p>
+        <p>
+        <label for="writer">작성자</label><br>
+        <input type="text" name="writer" id="writer"  th:value="${nickname}" readonly><br>
+        </p>
+        <p>
+        <label for="content">본문</label><br>
+        <textarea name="content" id="content" cols="10" rows="10"></textarea> <br>
+        </p>
+
+        <input type="hidden" name="viewCount" value=0>
+
+        <button type="submit">작성</button>
+    </form>
+
+</div>
+
+</body>
+</html>
