@@ -1,5 +1,5 @@
 # miniWeb
-Spring Boot, JPA, MySQL을 이용하여 작은 게시판을 만들었습니다.
+Spring Boot, Spring Data JPA, MySQL을 이용하여 작은 게시판을 만들었습니다.
 
 로그인의 경우 SpringSecurity을 적용해보았습니다. 인증방식 (세션, JWT, Oauth)은 차후 공부 후에 추가해볼 것입니다.
 우선적으로 formLogin을 이용한 Login을 구현하였습니다.
